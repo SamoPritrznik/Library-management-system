@@ -1,0 +1,19 @@
+HERE ARE ALL OF THE MYSQL FUNCTIONS USED IN THE PROJECT
+
+/---------------------/
+DELIMITER $$
+
+CREATE FUNCTION validation_admin(name VARCHAR(50), pass VARCHAR(50)) RETURNS BOOLEAN
+BEGIN
+	DECLARE X INTEGER;
+    SELECT COUNT(*) INTO X FROM Admins a WHERE a.username = name AND a.password = pass;
+	IF(x == 0) 
+    THEN
+    RETURN FALSE;
+    ELSE
+    RETURN TRUE;
+    END IF;
+END
+
+$$ DELIMITER ;
+/---------------------/

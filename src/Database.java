@@ -10,7 +10,7 @@ public class Database {
 		Connection con=null;
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://remotemysql.com:3306/32bgCe07X7","32bgCe07X7","bxv4toz8NW");
+			con=DriverManager.getConnection("jdbc:mysql://sql7.freemysqlhosting.net:3306/sql7328719","sql7328719","Xd55U7zAXZ");
 			
 		}catch(Exception e){System.out.println(e);}
 		return con;

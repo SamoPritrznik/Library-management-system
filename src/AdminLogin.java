@@ -3,6 +3,9 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.swing.GroupLayout;
 import javax.swing.JButton;
@@ -55,9 +58,16 @@ public class AdminLogin extends JFrame {
 		JButton btnLogin = new JButton("prijava");
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			String name=textField.getText();
-			String password=String.valueOf(passwordField.getPassword());
-			
+			String name = textField.getText();
+			String password = String.valueOf(passwordField.getPassword());
+			if(AdminData.validate_admin(name, password)){
+				System.out.println("dela");
+				frame.dispose();
+			}else{
+				JOptionPane.showMessageDialog(AdminLogin.this, "Napačno geslo ali pa ime","napaka pri prijavi!", JOptionPane.ERROR_MESSAGE);
+				textField.setText("");
+				passwordField.setText("");
+			}
 			}
 		});
 		
