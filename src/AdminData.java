@@ -56,4 +56,19 @@ public class AdminData {
 		}catch(Exception e){System.out.println(e);}
 		return status;
 	}
+	
+	public static boolean delete(String name, String surname){
+		boolean status = false;
+		try{
+			Connection con = Database.getConnection();
+			PreparedStatement ps=con.prepareStatement("SELECT delete_lib(?, ?)");
+			ps.setString(1,name);
+			ps.setString(2,surname);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			status = rs.getBoolean(1);
+			con.close();
+		}catch(Exception e){System.out.println(e);}
+		return status;
+	}
 }

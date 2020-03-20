@@ -44,3 +44,17 @@ END
 
 $$ DELIMITER ;
 /---------------------/
+
+/---------------------/
+DELIMITER $$
+
+CREATE FUNCTION delete_lib(nam VARCHAR(50), sur VARCHAR(50)) RETURNS BOOLEAN
+BEGIN
+
+DELETE FROM Librarians WHERE name = nam AND surname = sur;
+RETURN true;
+
+END
+
+$$ DELIMITER ;
+/---------------------/

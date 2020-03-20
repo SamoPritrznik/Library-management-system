@@ -64,8 +64,7 @@ public class AdminMenu extends JFrame {
 		JButton btnDeleteLibrarian = new JButton("Izbriši knjižničarja");
 		btnDeleteLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			System.out.println("dela");
-			frame.dispose();
+			AdminDelLib.main(new String []{});
 			}
 		});
 		btnDeleteLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 15));
