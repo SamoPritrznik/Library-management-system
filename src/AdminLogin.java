@@ -61,7 +61,7 @@ public class AdminLogin extends JFrame {
 			String name = textField.getText();
 			String password = String.valueOf(passwordField.getPassword());
 			if(AdminData.validate_admin(name, password)){
-				System.out.println("dela");
+				AdminMenu.main(new String[]{});
 				frame.dispose();
 			}else{
 				JOptionPane.showMessageDialog(AdminLogin.this, "Napačno geslo ali pa ime","napaka pri prijavi!", JOptionPane.ERROR_MESSAGE);

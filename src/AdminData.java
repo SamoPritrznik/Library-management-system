@@ -10,9 +10,10 @@ public class AdminData {
 			Connection con = Database.getConnection();
 			PreparedStatement ps=con.prepareStatement("SELECT validation_admin(?, ?)");
 			ps.setString(1, name); 
-			ps.setString(2,password);
+			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
-			if(rs.getInt(0) == 1) {
+			rs.next();
+			if(rs.getBoolean(1) == true) {
 				con.close();
 				return true;
 			}else {
