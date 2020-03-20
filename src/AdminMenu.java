@@ -19,11 +19,13 @@ public class AdminMenu extends JFrame {
 	static AdminMenu frame;
 	private JPanel contentPane;
 
-	public static void main(String[] args) {
+	public static void main(String[] args, String name, String password) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
+				int admin_id = 0;
 				try {
-					frame = new AdminMenu();
+					admin_id = AdminData.getAdminId(name, password);
+					frame = new AdminMenu(admin_id);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -32,7 +34,7 @@ public class AdminMenu extends JFrame {
 		});
 	}
 
-	public AdminMenu() {
+	public AdminMenu(int admin_id) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 371);
 		contentPane = new JPanel();
@@ -47,8 +49,7 @@ public class AdminMenu extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			System.out.println("dela");
-			frame.dispose();
+			AdminAddLib.main(new String []{}, admin_id);
 			}
 		});
 		

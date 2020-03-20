@@ -15,3 +15,32 @@ END
 
 $$ DELIMITER ;
 /---------------------/
+
+/---------------------/
+DELIMITER  $$
+
+CREATE FUNCTION save_lib(nam VARCHAR(50), surnam VARCHAR(50), pass VARCHAR(50), em VARCHAR(50), adm INT) RETURNS INT
+BEGIN
+
+INSERT INTO Librarians(id, name, surname, password, email, admin_id) VALUES (NULL, nam, surnam, pass, em, adm);
+RETURN 1;
+
+END
+
+$$ DELIMITER ;
+/---------------------/
+
+/---------------------/
+DELIMITER $$
+
+CREATE FUNCTION getAdminId(name VARCHAR(50), pass VARCHAR(50)) RETURNS INT
+BEGIN
+DECLARE xid INT;
+
+SELECT a.id INTO xid FROM Admins a WHERE a.username = name AND a.password = pass;
+RETURN xid;
+
+END
+
+$$ DELIMITER ;
+/---------------------/
