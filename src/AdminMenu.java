@@ -56,7 +56,7 @@ public class AdminMenu extends JFrame {
 		JButton btnViewLibrarian = new JButton("Poglej knjižničarje");
 		btnViewLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			System.out.println("dela");
+			AdminViewLib.main(new String []{});
 			}
 		});
 		btnViewLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 15));

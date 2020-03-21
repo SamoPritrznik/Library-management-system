@@ -5,7 +5,7 @@ DELIMITER $$
 
 CREATE FUNCTION validation_admin(name VARCHAR(50), pass VARCHAR(50)) RETURNS BOOLEAN
 BEGIN
-	IF((SELECT COUNT(*) INTO X FROM Admins a WHERE a.username = name AND a.password = pass) = 0) 
+	IF((SELECT COUNT(*) FROM Admins a WHERE a.username = name AND a.password = pass) = 0) 
     THEN
     RETURN FALSE;
     ELSE
