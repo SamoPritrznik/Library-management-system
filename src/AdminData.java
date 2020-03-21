@@ -25,6 +25,26 @@ public class AdminData {
 		return status;
 	}
 	
+	public static boolean validate_librarian(String email, String password){
+		boolean status = false;
+		try{
+			Connection con = Database.getConnection();
+			PreparedStatement ps=con.prepareStatement("SELECT validation_librarian(?, ?)");
+			ps.setString(1, email); 
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			if(rs.getBoolean(1) == true) {
+				con.close();
+				return true;
+			}else {
+				con.close();
+				return false;
+			}
+		}catch(Exception e){System.out.println(e);}
+		return status;
+	}
+	
 	public static int getAdminId(String name, String password) {
 		int id = 0;
  		try {

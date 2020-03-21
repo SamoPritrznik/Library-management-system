@@ -53,6 +53,13 @@ public class Menu extends JFrame{
 		btnAdminLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnLibrarianLogin = new JButton("Knjižničar prijava");
+		btnLibrarianLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			LibrarianLogin.main(new String[]{});
+			frame.dispose();
+			}
+		});
+		
 		btnLibrarianLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(

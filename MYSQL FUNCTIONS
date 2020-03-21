@@ -58,3 +58,19 @@ END
 
 $$ DELIMITER ;
 /---------------------/
+
+/---------------------/
+DELIMITER $$
+
+CREATE FUNCTION validation_librarian(email VARCHAR(50), pass VARCHAR(50)) RETURNS BOOLEAN
+BEGIN
+	IF((SELECT COUNT(*) FROM Librarians l WHERE l.email = email AND l.password = pass) = 0) 
+    THEN
+    RETURN FALSE;
+    ELSE
+    RETURN TRUE;
+    END IF;
+END
+
+$$ DELIMITER ;
+/---------------------/
