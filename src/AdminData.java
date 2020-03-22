@@ -61,6 +61,22 @@ public class AdminData {
  		return id;
 	}
 	
+	public static int getLibrarianId(String email, String password) {
+		int id = 0;
+ 		try {
+			Connection con = Database.getConnection();
+			PreparedStatement ps = con.prepareStatement("SELECT getLibrarianId(?, ?)");
+			ps.setString(1, email);
+			ps.setString(2, password);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			id = rs.getInt(1);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+ 		return id;
+	}
+	
 	public static int save(String name, String surname, String password, String email, int adm_id){
 		int status=0;
 		try{

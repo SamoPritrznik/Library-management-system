@@ -61,7 +61,7 @@ public class LibrarianLogin extends JFrame {
 			String password=String.valueOf(passwordField.getPassword());
 			
 			if(AdminData.validate_librarian(email, password) == true){
-				System.out.println("prijava uspesna");
+				LibrarianMenu.main(new String []{}, email, password);
 				frame.dispose();
 			}else{
 				JOptionPane.showMessageDialog(LibrarianLogin.this, "Email ali pa geslo je napacno","Napaka!", JOptionPane.ERROR_MESSAGE);

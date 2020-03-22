@@ -74,3 +74,18 @@ END
 
 $$ DELIMITER ;
 /---------------------/
+
+/---------------------/
+DELIMITER $$
+
+CREATE FUNCTION getLibraryId(em VARCHAR(50), pass VARCHAR(50)) RETURNS INT
+BEGIN
+DECLARE xid INT;
+
+SELECT l.id INTO xid FROM Librarians l WHERE l.email = em AND l.password = pass;
+RETURN xid;
+
+END
+
+$$ DELIMITER ;
+/---------------------/
