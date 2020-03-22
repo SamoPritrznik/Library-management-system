@@ -40,11 +40,13 @@ public class LibrarianMenu extends JFrame {
 		contentPane.setForeground(Color.GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblLibrarianSection = new JLabel("Kontrolna panela za knjižničarje");
 		lblLibrarianSection.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		
 		JButton btnNewButton = new JButton("Dodaj knjigo");
+		btnNewButton.setBackground(Color.cyan);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			
@@ -54,6 +56,7 @@ public class LibrarianMenu extends JFrame {
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnViewBooks = new JButton("Pogled knjig");
+		btnViewBooks.setBackground(Color.cyan);
 		btnViewBooks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				LibrarianViewBooks.main(new String[]{});
@@ -62,6 +65,7 @@ public class LibrarianMenu extends JFrame {
 		btnViewBooks.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnIssueBook = new JButton("Oddaj knjigo");
+		btnIssueBook.setBackground(Color.cyan);
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				IssueBook.main(new String []{});
@@ -70,6 +74,7 @@ public class LibrarianMenu extends JFrame {
 		btnIssueBook.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnViewIssuedBooks = new JButton("Pogled oddanih knjig");
+		btnViewIssuedBooks.setBackground(Color.cyan);
 		btnViewIssuedBooks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LibrarianViewIssuedBooks.main(new String []{});
@@ -78,6 +83,7 @@ public class LibrarianMenu extends JFrame {
 		btnViewIssuedBooks.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnReturnBook = new JButton("Vrni knjigo");
+		btnReturnBook.setBackground(Color.cyan);
 		btnReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ReturnBook.main(new String[]{});
@@ -87,6 +93,7 @@ public class LibrarianMenu extends JFrame {
 		btnReturnBook.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnLogout = new JButton("Izpis");
+		btnLogout.setBackground(Color.cyan);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Menu.main(new String []{});

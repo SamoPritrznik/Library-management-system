@@ -42,9 +42,10 @@ public class LibrarianLogin extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblAdminLoginForm = new JLabel("Prijava knižničarja");
-		lblAdminLoginForm.setForeground(Color.GRAY);
+		lblAdminLoginForm.setForeground(Color.BLACK);
 		lblAdminLoginForm.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JLabel lblEnterName = new JLabel("Vnesi email: ");
@@ -55,6 +56,7 @@ public class LibrarianLogin extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnLogin = new JButton("Login");
+		btnLogin.setBackground(Color.cyan);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String email=textField.getText();

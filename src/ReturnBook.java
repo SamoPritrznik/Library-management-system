@@ -42,6 +42,7 @@ public class ReturnBook extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblReturnBook = new JLabel("Vrni knjigo");
 		lblReturnBook.setForeground(Color.GRAY);
@@ -58,6 +59,7 @@ public class ReturnBook extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnReturnBook = new JButton("Vrni knjigo");
+		btnReturnBook.setBackground(Color.cyan);
 		btnReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String email=textField.getText();
@@ -78,6 +80,7 @@ public class ReturnBook extends JFrame {
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnBack = new JButton("Nazaj");
+		btnBack.setBackground(Color.cyan);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();

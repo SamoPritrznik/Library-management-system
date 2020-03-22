@@ -39,14 +39,15 @@ public class BookNew extends JFrame {
 	}
 
 	public BookNew(int id) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 404);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblAddBooks = new JLabel("Dodaj knjigo");
-		lblAddBooks.setForeground(Color.GRAY);
+		lblAddBooks.setForeground(Color.BLACK);
 		lblAddBooks.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JLabel lblCallNo = new JLabel("Ime knjige: ");
@@ -71,6 +72,7 @@ public class BookNew extends JFrame {
 		
 		
 		JButton btnAddBooks = new JButton("Dodaj knjigo");
+		btnAddBooks.setBackground(Color.cyan);
 		btnAddBooks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String name=textField.getText();
@@ -89,6 +91,7 @@ public class BookNew extends JFrame {
 		});
 		
 		JButton btnBack = new JButton("Nazaj");
+		btnBack.setBackground(Color.cyan);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
@@ -100,9 +103,9 @@ public class BookNew extends JFrame {
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(18)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING, false)
-								.addComponent(lblName, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
-								.addComponent(lblCallNo)
-								.addComponent(lblAuthor, GroupLayout.PREFERRED_SIZE, 37, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblName, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblCallNo, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblAuthor, GroupLayout.PREFERRED_SIZE, 80, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblPublisher, GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE))
 							.addGap(47)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -118,7 +121,7 @@ public class BookNew extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(359, Short.MAX_VALUE)
 					.addComponent(btnBack)
-					.addContainerGap())
+					.addGap(176))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

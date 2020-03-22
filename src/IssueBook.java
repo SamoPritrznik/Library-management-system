@@ -43,6 +43,7 @@ public class IssueBook extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblNewLabel = new JLabel("Oddaj knjigo ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -69,6 +70,7 @@ public class IssueBook extends JFrame {
 		JLabel lblStudentContact = new JLabel("Email: ");
 		
 		JButton btnIssueBook = new JButton("Oddaj knjigo");
+		btnIssueBook.setBackground(Color.cyan);
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -96,6 +98,7 @@ public class IssueBook extends JFrame {
 		});
 		
 		JButton btnBack = new JButton("Back");
+		btnBack.setBackground(Color.cyan);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
