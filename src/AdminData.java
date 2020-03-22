@@ -1,9 +1,47 @@
 import java.sql.Array;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
 public class AdminData {
+	
+	public static boolean checkBook(int id){
+		boolean status=false;
+		try{
+			Connection con=Database.getConnection();
+			PreparedStatement ps=con.prepareStatement("SELECT * FROM Books WHERE id=?");
+			ps.setInt(1, id);
+		    ResultSet rs=ps.executeQuery();
+			status=rs.next();
+			con.close();
+		}catch(Exception e){System.out.println(e);}
+		return status;
+	}
+	
+	public static boolean issueBook(int id, String name,String surname, String email){
+		boolean status=false;
+		Timestamp time = new Timestamp(System.currentTimeMillis());
+		try{
+			Connection con=Database.getConnection();
+			
+			PreparedStatement ps=con.prepareStatement("SELECT issue_book(?,?,?,?,?)");
+			
+			ps.setString(1,name);
+			ps.setString(2,surname);
+			ps.setString(3,email);
+			ps.setTimestamp(4, time);
+			ps.setInt(5,id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			status = rs.getBoolean(1);
+			
+			con.close();
+		}catch(Exception e){System.out.println(e);}
+		return status;
+	}
 	
 	public static boolean validate_admin(String name, String password){
 		boolean status = false;

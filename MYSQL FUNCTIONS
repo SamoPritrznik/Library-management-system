@@ -109,3 +109,19 @@ END
 
 $$ DELIMITER ;
 /---------------------/
+
+/---------------------/
+DELIMITER $$
+
+CREATE FUNCTION issue_book(nam VARCHAR(50), surn VARCHAR(50), email1 VARCHAR(50), times TIMESTAMP, book_id1 INT) RETURNS BOOLEAN
+BEGIN
+
+INSERT INTO Rentals(id, name_user, surname_user, email, timestamp, book_id) VALUES (NULL, nam, surn, email1, times, book_id1);
+UPDATE Books SET rented = 1 WHERE id = book_id1;
+
+RETURN TRUE;
+
+END
+
+$$ DELIMITER ;
+/---------------------/
