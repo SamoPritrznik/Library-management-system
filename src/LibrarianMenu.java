@@ -72,7 +72,7 @@ public class LibrarianMenu extends JFrame {
 		JButton btnViewIssuedBooks = new JButton("Pogled oddanih knjig");
 		btnViewIssuedBooks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				LibrarianViewIssuedBooks.main(new String []{});
 			}
 		});
 		btnViewIssuedBooks.setFont(new Font("Tahoma", Font.PLAIN, 13));
