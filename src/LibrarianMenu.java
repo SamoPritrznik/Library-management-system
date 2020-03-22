@@ -56,7 +56,7 @@ public class LibrarianMenu extends JFrame {
 		JButton btnViewBooks = new JButton("Pogled knjig");
 		btnViewBooks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				LibrarianViewBooks.main(new String[]{});
 			}
 		});
 		btnViewBooks.setFont(new Font("Tahoma", Font.PLAIN, 13));
