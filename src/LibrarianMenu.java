@@ -80,8 +80,8 @@ public class LibrarianMenu extends JFrame {
 		JButton btnReturnBook = new JButton("Vrni knjigo");
 		btnReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ReturnBook.main(new String[]{});
 				
-				frame.dispose();
 			}
 		});
 		btnReturnBook.setFont(new Font("Tahoma", Font.PLAIN, 13));

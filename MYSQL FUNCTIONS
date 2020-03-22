@@ -125,3 +125,22 @@ END
 
 $$ DELIMITER ;
 /---------------------/
+
+/---------------------/
+DELIMITER $$
+
+CREATE FUNCTION return_book(emai1 VARCHAR(50), ii INT) RETURNS INT
+BEGIN
+DECLARE xid_us INT;
+
+SELECT COUNT(id) INTO xid_us FROM Rentals WHERE email = emai1 AND book_id = ii;
+IF(xid_us > 0) THEN
+UPDATE Books SET rented = 0 WHERE id = ii;
+RETURN 1;
+ELSE RETURN 0;
+END IF;
+
+END
+
+$$ DELIMITER ;
+/---------------------/

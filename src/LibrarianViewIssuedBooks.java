@@ -41,7 +41,7 @@ public class LibrarianViewIssuedBooks extends JFrame {
 		String column[]=null;
 		try{
 			Connection con=Database.getConnection();
-			PreparedStatement ps=con.prepareStatement("SELECT b.id, b.name, r.name_user, r.surname_user, r.timestamp FROM Books b INNER JOIN Rentals r ON b.id = r.book_id WHERE b.rented = 1",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			PreparedStatement ps=con.prepareStatement("SELECT b.id, b.name, r.name_user, r.surname_user, r.email, r.timestamp FROM Books b INNER JOIN Rentals r ON b.id = r.book_id WHERE b.rented = 1",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
 			ResultSet rs=ps.executeQuery();
 			
 			ResultSetMetaData rsmd=rs.getMetaData();

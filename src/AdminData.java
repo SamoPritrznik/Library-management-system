@@ -8,6 +8,23 @@ import java.sql.ResultSet;
 
 public class AdminData {
 	
+	public static int returnBook(String email, int id){
+		int status=0;
+		try{
+			Connection con=Database.getConnection();
+			
+			PreparedStatement ps=con.prepareStatement("SELECT return_book(?,?)");
+			ps.setString(1,email);
+			ps.setInt(2,id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			status = rs.getInt(1);
+			
+			con.close();
+		}catch(Exception e){System.out.println(e);}
+		return status;
+	}
+	
 	public static boolean checkBook(int id){
 		boolean status=false;
 		try{
