@@ -40,14 +40,15 @@ public class AdminAddLib extends JFrame {
 	}
 
 	public AdminAddLib(int admin_id) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblAddLibrarian = new JLabel("Add Librarian");
-		lblAddLibrarian.setForeground(Color.DARK_GRAY);
+		lblAddLibrarian.setForeground(Color.BLACK);
 		lblAddLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		
 		JLabel lblName = new JLabel("Priimek:");
@@ -73,6 +74,7 @@ public class AdminAddLib extends JFrame {
 		
 		
 		JButton btnNewButton = new JButton("Dodaj knjižničarja");
+		btnNewButton.setBackground(Color.cyan);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String name=textField_1.getText();
@@ -88,6 +90,7 @@ public class AdminAddLib extends JFrame {
 		btnNewButton.setForeground(Color.DARK_GRAY);
 		
 		JButton btnBack = new JButton("Nazaj");
+		btnBack.setBackground(Color.cyan);
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			frame.dispose();

@@ -1,4 +1,5 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -34,11 +35,12 @@ public class AdminDelLib extends JFrame {
 	}
 	
 	public AdminDelLib() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblEnterId = new JLabel("Vstavi ime: ");
 		
@@ -51,6 +53,7 @@ public class AdminDelLib extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnDelete = new JButton("Izbriši");
+		btnDelete.setBackground(Color.cyan);
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String name = textField.getText();
@@ -66,6 +69,7 @@ public class AdminDelLib extends JFrame {
 		btnDelete.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		
 		JButton btnNewButton = new JButton("Nazaj");
+		btnNewButton.setBackground(Color.cyan);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				frame.dispose();
@@ -84,7 +88,7 @@ public class AdminDelLib extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 						.addGap(39)
 						.addComponent(lblEnterSur)
-						.addGap(57)
+						.addGap(35)
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 178, GroupLayout.PREFERRED_SIZE)
 						.addContainerGap(107, Short.MAX_VALUE))
 				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
@@ -94,7 +98,7 @@ public class AdminDelLib extends JFrame {
 				.addGroup(Alignment.TRAILING, gl_contentPane.createSequentialGroup()
 					.addContainerGap(322, Short.MAX_VALUE)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 92, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addGap(148))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -109,7 +113,7 @@ public class AdminDelLib extends JFrame {
 						.addComponent(lblEnterSur))
 					.addGap(33)
 					.addComponent(btnDelete, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
-					.addGap(43)
+					.addGap(33)
 					.addComponent(btnNewButton)
 					.addContainerGap(78, Short.MAX_VALUE))
 		);

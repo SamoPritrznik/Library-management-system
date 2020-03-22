@@ -1,7 +1,13 @@
 import java.awt.BorderLayout;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.io.IOException;
+import javax.swing.JPanel;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,6 +20,14 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
+
+import java.text.FieldPosition;
+import java.text.Format;
+import java.text.ParsePosition;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ListIterator;
+
 
 public class Menu extends JFrame{
 	static Menu frame;
@@ -31,6 +45,8 @@ public class Menu extends JFrame{
 			}
 		});
 	}
+	
+	
 
 	public Menu() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -38,12 +54,15 @@ public class Menu extends JFrame{
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblLibraryManagement = new JLabel("Sistem za knjižnice", SwingConstants.CENTER);
+		
 		lblLibraryManagement.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblLibraryManagement.setForeground(Color.GRAY);
+		lblLibraryManagement.setForeground(Color.BLACK);
 		
 		JButton btnAdminLogin = new JButton("Admin prijava");
+		btnAdminLogin.setBackground(Color.cyan);
 		btnAdminLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			AdminLogin.main(new String[]{});
@@ -53,6 +72,7 @@ public class Menu extends JFrame{
 		btnAdminLogin.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnLibrarianLogin = new JButton("Knjižničar prijava");
+		btnLibrarianLogin.setBackground(Color.cyan);
 		btnLibrarianLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			LibrarianLogin.main(new String[]{});

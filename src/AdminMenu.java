@@ -40,13 +40,15 @@ public class AdminMenu extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblAdminSection = new JLabel("Adminovo kontrolno okno");
 		lblAdminSection.setFont(new Font("Tahoma", Font.PLAIN, 22));
-		lblAdminSection.setForeground(Color.GRAY);
+		lblAdminSection.setForeground(Color.BLACK);
 		
 		JButton btnNewButton = new JButton("Dodaj knjižničarja");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnNewButton.setBackground(Color.cyan);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			AdminAddLib.main(new String []{}, admin_id);
@@ -54,6 +56,7 @@ public class AdminMenu extends JFrame {
 		});
 		
 		JButton btnViewLibrarian = new JButton("Poglej knjižničarje");
+		btnViewLibrarian.setBackground(Color.cyan);
 		btnViewLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			AdminViewLib.main(new String []{});
@@ -62,6 +65,7 @@ public class AdminMenu extends JFrame {
 		btnViewLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnDeleteLibrarian = new JButton("Izbriši knjižničarja");
+		btnDeleteLibrarian.setBackground(Color.cyan);
 		btnDeleteLibrarian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			AdminDelLib.main(new String []{});
@@ -70,6 +74,7 @@ public class AdminMenu extends JFrame {
 		btnDeleteLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		
 		JButton btnLogout = new JButton("Izpis");
+		btnLogout.setBackground(Color.cyan);
 		btnLogout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Menu.main(new String[]{});

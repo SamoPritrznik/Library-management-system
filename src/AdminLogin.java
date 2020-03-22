@@ -43,9 +43,10 @@ public class AdminLogin extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
+		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblAdminLoginForm = new JLabel("Admin prijava");
-		lblAdminLoginForm.setForeground(Color.GRAY);
+		lblAdminLoginForm.setForeground(Color.BLACK);
 		lblAdminLoginForm.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JLabel lblEnterName = new JLabel("Vnesi ime:");
@@ -56,6 +57,7 @@ public class AdminLogin extends JFrame {
 		textField.setColumns(10);
 		
 		JButton btnLogin = new JButton("prijava");
+		btnLogin.setBackground(Color.cyan);
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String name = textField.getText();
