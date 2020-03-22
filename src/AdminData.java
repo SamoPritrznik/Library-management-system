@@ -65,7 +65,7 @@ public class AdminData {
 		int id = 0;
  		try {
 			Connection con = Database.getConnection();
-			PreparedStatement ps = con.prepareStatement("SELECT getLibrarianId(?, ?)");
+			PreparedStatement ps = con.prepareStatement("SELECT getLibraryId(?, ?)");
 			ps.setString(1, email);
 			ps.setString(2, password);
 			ResultSet rs = ps.executeQuery();
@@ -88,6 +88,24 @@ public class AdminData {
 			ps.setString(4,email);
 			ps.setInt(5, adm_id);
 			ps.executeQuery();
+			con.close();
+		}catch(Exception e){System.out.println(e);}
+		return status;
+	}
+	
+	public static int saveBook(String name, String desc, String aut_na, String aut_su, int adm_id){
+		int status=0;
+		try{
+			Connection con = Database.getConnection();
+			PreparedStatement ps=con.prepareStatement("SELECT new_book(?, ?, ?, ?, ?)");
+			ps.setString(1,name);
+			ps.setString(2,desc);
+			ps.setString(3,aut_na);
+			ps.setString(4,aut_su);
+			ps.setInt(5, adm_id);
+			ResultSet rs = ps.executeQuery();
+			rs.next();
+			status = rs.getInt(1);
 			con.close();
 		}catch(Exception e){System.out.println(e);}
 		return status;

@@ -89,3 +89,23 @@ END
 
 $$ DELIMITER ;
 /---------------------/
+
+/---------------------/
+DELIMITER  $$
+
+CREATE FUNCTION new_book(nam VARCHAR(50), descript TEXT, aut_na VARCHAR(50), aut_su VARCHAR(50), adm INT) RETURNS INT
+BEGIN
+DECLARE xid INT;
+
+INSERT INTO Books(id, name, description, aut_name, aut_surname, rented) VALUES (NULL, nam, descript, aut_na, aut_su, 0);
+
+SELECT b.id INTO xid FROM Books b WHERE b.name = name AND b.aut_surname = aut_su;
+
+INSERT INTO Librarians_Books(id, librarian_id, book_id) VALUES (NULL, adm, xid);
+
+RETURN 1;
+
+END
+
+$$ DELIMITER ;
+/---------------------/
