@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
@@ -16,6 +18,13 @@ import javax.swing.JPasswordField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.KeySpec;
+import java.util.Arrays;
+import java.util.Base64;
+import java.util.Optional;
 import java.awt.event.ActionEvent;
 
 public class AdminAddLib extends JFrame {
@@ -25,6 +34,9 @@ public class AdminAddLib extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JPasswordField passwordField;
+	private static int ITERATIONS = 65536;
+	private static int KEY_LENGTH = 512;
+	private static String ALGORITHM = "PBKDF2WithHmacSHA512";
 
 	public static void main(String[] args, int admin_id) {
 		EventQueue.invokeLater(new Runnable() {
@@ -38,8 +50,12 @@ public class AdminAddLib extends JFrame {
 			}
 		});
 	}
+	
+	
 
 	public AdminAddLib(int admin_id) {
+		
+		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 450);
 		contentPane = new JPanel();
@@ -79,10 +95,17 @@ public class AdminAddLib extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 			String name=textField_1.getText();
 			String password=String.valueOf(passwordField.getPassword());
+			
+			String myPassword = password;
+	        
+	        String salt = PasswordUtils.getSalt(30);
+	        
+	        String mySecurePassword = PasswordUtils.generateSecurePassword(myPassword, salt);
+			
 			String surname=textField.getText();
 			String email=textField_2.getText();
 
-			AdminData.save(name, surname, password, email, admin_id);
+			AdminData.save(name, surname, mySecurePassword, email, admin_id);
 			
 			frame.dispose();
 			}

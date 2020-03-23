@@ -60,9 +60,16 @@ public class LibrarianLogin extends JFrame {
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			String email=textField.getText();
+	        
 			String password=String.valueOf(passwordField.getPassword());
 			
-			if(AdminData.validate_librarian(email, password) == true){
+			String myPassword = password;
+	        
+	        String salt = PasswordUtils.getSalt(30);
+	        
+	        String mySecurePassword = PasswordUtils.generateSecurePassword(myPassword, salt);
+			
+			if(AdminData.validate_librarian(email, mySecurePassword) == true){
 				LibrarianMenu.main(new String []{}, email, password);
 				frame.dispose();
 			}else{
