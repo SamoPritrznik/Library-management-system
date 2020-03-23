@@ -47,7 +47,7 @@ public class AdminAddLib extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setBackground(Color.ORANGE);
 		
-		JLabel lblAddLibrarian = new JLabel("Add Librarian");
+		JLabel lblAddLibrarian = new JLabel("Dodaj knjižničarja");
 		lblAddLibrarian.setForeground(Color.BLACK);
 		lblAddLibrarian.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		
@@ -73,7 +73,7 @@ public class AdminAddLib extends JFrame {
 		
 		
 		
-		JButton btnNewButton = new JButton("Dodaj knjižničarja");
+		JButton btnNewButton = new JButton("Dodaj");
 		btnNewButton.setBackground(Color.cyan);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -116,7 +116,7 @@ public class AdminAddLib extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(151, Short.MAX_VALUE)
 					.addComponent(lblAddLibrarian)
-					.addGap(144))
+					.addGap(110))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(160, Short.MAX_VALUE)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 131, GroupLayout.PREFERRED_SIZE)
@@ -131,7 +131,6 @@ public class AdminAddLib extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addComponent(lblAddLibrarian)
 					.addGap(18)
-					.addGap(18)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblEmail)
 						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -144,13 +143,16 @@ public class AdminAddLib extends JFrame {
 							.addGroup(gl_contentPane.createSequentialGroup()
 								.addComponent(textField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)))
+								.addGap(18)
+								.addComponent(passwordField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addGap(18)))
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblAddress)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 36, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+					.addGap(18)
 					.addComponent(btnBack)
 					.addGap(19))
 		);

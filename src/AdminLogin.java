@@ -80,7 +80,7 @@ public class AdminLogin extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(124)
+							.addGap(157)
 							.addComponent(lblAdminLoginForm))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(19)
@@ -95,7 +95,7 @@ public class AdminLogin extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(187, Short.MAX_VALUE)
 					.addComponent(btnLogin, GroupLayout.PREFERRED_SIZE, 86, GroupLayout.PREFERRED_SIZE)
-					.addGap(151))
+					.addGap(170))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)

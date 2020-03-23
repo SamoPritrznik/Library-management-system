@@ -87,13 +87,13 @@ public class Menu extends JFrame{
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(64)
+							.addGap(135)
 							.addComponent(lblLibraryManagement))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(140)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(btnLibrarianLogin, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(btnAdminLogin, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
+	   							.addComponent(btnAdminLogin, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE))))
 					.addContainerGap(95, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(

@@ -3,6 +3,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -42,7 +43,7 @@ public class AdminMenu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setBackground(Color.ORANGE);
 		
-		JLabel lblAdminSection = new JLabel("Adminovo kontrolno okno");
+		JLabel lblAdminSection = new JLabel("Adminovo kontrolno okno", SwingConstants.CENTER);
 		lblAdminSection.setFont(new Font("Tahoma", Font.PLAIN, 22));
 		lblAdminSection.setForeground(Color.BLACK);
 		
@@ -87,8 +88,8 @@ public class AdminMenu extends JFrame {
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(150, Short.MAX_VALUE)
-					.addComponent(lblAdminSection, GroupLayout.PREFERRED_SIZE, 151, GroupLayout.PREFERRED_SIZE)
-					.addGap(123))
+					.addComponent(lblAdminSection, GroupLayout.PREFERRED_SIZE, 400, GroupLayout.PREFERRED_SIZE)
+					.addGap(60))
 				.addGroup(Alignment.LEADING, gl_contentPane.createSequentialGroup()
 					.addGap(134)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
