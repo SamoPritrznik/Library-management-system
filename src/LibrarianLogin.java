@@ -80,7 +80,7 @@ public class LibrarianLogin extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(124)
+							.addGap(150)
 							.addComponent(lblAdminLoginForm))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(19)

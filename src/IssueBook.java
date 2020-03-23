@@ -47,7 +47,7 @@ public class IssueBook extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("Oddaj knjigo ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
-		lblNewLabel.setForeground(Color.GRAY);
+		lblNewLabel.setForeground(Color.BLACK);
 		
 		JLabel lblBookName = new JLabel("Identifikacija knjige:");
 		
@@ -69,7 +69,7 @@ public class IssueBook extends JFrame {
 		
 		JLabel lblStudentContact = new JLabel("Email: ");
 		
-		JButton btnIssueBook = new JButton("Oddaj knjigo");
+		JButton btnIssueBook = new JButton("Oddaj");
 		btnIssueBook.setBackground(Color.cyan);
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -133,8 +133,9 @@ public class IssueBook extends JFrame {
 								.addComponent(lblNewLabel_1)
 								.addGroup(gl_contentPane.createSequentialGroup()
 									.addComponent(btnIssueBook, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
-									.addGap(47)
-									.addComponent(btnBack)))
+									.addGap(10)
+									.addComponent(btnBack)
+									.addGap(0)))
 							.addGap(100))))
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGap(146)
@@ -164,8 +165,10 @@ public class IssueBook extends JFrame {
 						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnIssueBook, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnBack))
+						.addComponent(btnIssueBook, GroupLayout.PREFERRED_SIZE, 31, GroupLayout.PREFERRED_SIZE))
+						.addGap(26)
+					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
+							.addComponent(btnBack))
 					.addGap(18)
 					.addComponent(lblNewLabel_1)
 					.addGap(25))

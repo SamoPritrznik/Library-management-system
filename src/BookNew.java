@@ -71,7 +71,7 @@ public class BookNew extends JFrame {
 		textField_3.setColumns(10);
 		
 		
-		JButton btnAddBooks = new JButton("Dodaj knjigo");
+		JButton btnAddBooks = new JButton("Dodaj");
 		btnAddBooks.setBackground(Color.cyan);
 		btnAddBooks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -98,7 +98,7 @@ public class BookNew extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addGroup(gl_contentPane.createSequentialGroup()
-							.addGap(150)
+							.addGap(170)
 							.addComponent(lblAddBooks))
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(18)

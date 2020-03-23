@@ -45,7 +45,7 @@ public class ReturnBook extends JFrame {
 		contentPane.setBackground(Color.ORANGE);
 		
 		JLabel lblReturnBook = new JLabel("Vrni knjigo");
-		lblReturnBook.setForeground(Color.GRAY);
+		lblReturnBook.setForeground(Color.BLACK);
 		lblReturnBook.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		
 		JLabel lblBookCallno = new JLabel("Email vračitelja: ");
@@ -114,7 +114,7 @@ public class ReturnBook extends JFrame {
 				.addGroup(gl_contentPane.createSequentialGroup()
 					.addContainerGap(355, Short.MAX_VALUE)
 					.addComponent(btnBack)
-					.addGap(46))
+					.addGap(194))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
