@@ -13,15 +13,23 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class ReturnBook extends JFrame {
 	static ReturnBook frame;
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
+	private JComboBox<String> booklist;
+	private String[] str;
+	private int counter = 0;
+	private int id = 0;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -44,6 +52,39 @@ public class ReturnBook extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setBackground(Color.ORANGE);
 		
+		Connection con=Database.getConnection();
+		PreparedStatement ps;
+		try {
+			ps = con.prepareStatement("SELECT COUNT(id) FROM Books WHERE rented = 1",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			str = new String[rs.getInt(1)];
+			
+			ps=con.prepareStatement("SELECT name FROM Books WHERE rented = 1",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+			rs=ps.executeQuery();
+			while(rs.next()) {
+				str[counter] = rs.getString("name");
+				counter++;
+			}
+		} catch (SQLException e1) {
+			System.out.println(e1);
+		}
+		
+		booklist = new JComboBox<>(str);
+		
+		
+		
+		try {
+			ps = con.prepareStatement("SELECT id FROM Books WHERE name=?");
+			ps.setString(1, (String) booklist.getSelectedItem());
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			id = rs.getInt(1);
+			
+		} catch (SQLException e1) {
+			System.out.println(e1);
+		}
+		
 		JLabel lblReturnBook = new JLabel("Vrni knjigo");
 		lblReturnBook.setForeground(Color.BLACK);
 		lblReturnBook.setFont(new Font("Tahoma", Font.PLAIN, 18));
@@ -55,15 +96,11 @@ public class ReturnBook extends JFrame {
 		textField = new JTextField();
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		
 		JButton btnReturnBook = new JButton("Vrni knjigo");
 		btnReturnBook.setBackground(Color.cyan);
 		btnReturnBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String email=textField.getText();
-				int id=Integer.parseInt(textField_1.getText());
 				int i=AdminData.returnBook(email, id);
 				if(i>0){
 					JOptionPane.showMessageDialog(ReturnBook.this,"Knjiga je bila vrnjena uspešna!");
@@ -96,7 +133,7 @@ public class ReturnBook extends JFrame {
 						.addComponent(lblBookCallno, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
 					.addGap(56)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
+						.addComponent(booklist, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textField, GroupLayout.PREFERRED_SIZE, 181, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(139, Short.MAX_VALUE))
 				.addGroup(gl_contentPane.createSequentialGroup()
@@ -128,7 +165,7 @@ public class ReturnBook extends JFrame {
 					.addGap(34)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblStudentId)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addComponent(booklist, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(29)
 					.addComponent(btnReturnBook, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
 					.addGap(23)

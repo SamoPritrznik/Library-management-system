@@ -13,7 +13,14 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
@@ -24,6 +31,7 @@ public class BookNew extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	
 
 	public static void main(String[] args, int id) {
 		EventQueue.invokeLater(new Runnable() {
@@ -38,7 +46,10 @@ public class BookNew extends JFrame {
 		});
 	}
 
+	
+	
 	public BookNew(int id) {
+		
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		setBounds(100, 100, 450, 404);
 		contentPane = new JPanel();
@@ -69,6 +80,8 @@ public class BookNew extends JFrame {
 		
 		textField_3 = new JTextField();
 		textField_3.setColumns(10);
+		
+	
 		
 		
 		JButton btnAddBooks = new JButton("Dodaj");
@@ -151,6 +164,7 @@ public class BookNew extends JFrame {
 		);
 		contentPane.setLayout(gl_contentPane);
 	}
+	
 
 }
 

@@ -13,8 +13,13 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 public class IssueBook extends JFrame {
@@ -24,6 +29,9 @@ public class IssueBook extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private JComboBox<String> booklist;
+	private String[] str;
+	private int counter = 0;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -38,21 +46,36 @@ public class IssueBook extends JFrame {
 		});
 	}
 
-	public IssueBook() {
+	public IssueBook() throws SQLException{
 		setBounds(100, 100, 438, 414);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setBackground(Color.ORANGE);
 		
+		Connection con=Database.getConnection();
+		PreparedStatement ps=con.prepareStatement("SELECT COUNT(id) FROM Books WHERE rented = 0",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		ResultSet rs=ps.executeQuery();
+		rs.next();
+		str = new String[rs.getInt(1)];
+		
+		ps=con.prepareStatement("SELECT name FROM Books WHERE rented = 0",ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+		rs=ps.executeQuery();
+		while(rs.next()) {
+			str[counter] = rs.getString("name");
+			counter++;
+		}
+		
+		
+		
+		booklist = new JComboBox<>(str);
+		
+		
 		JLabel lblNewLabel = new JLabel("Oddaj knjigo ");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		lblNewLabel.setForeground(Color.BLACK);
 		
 		JLabel lblBookName = new JLabel("Identifikacija knjige:");
-		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
 		
 		textField_2 = new JTextField();
 		textField_2.setColumns(10);
@@ -74,14 +97,28 @@ public class IssueBook extends JFrame {
 		btnIssueBook.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-			int bookcallno=Integer.parseInt(textField_1.getText());
 			String studentid=textField_2.getText();
 			String studentname=textField_3.getText();
 			String studentcontact=textField_4.getText();
+			int id;
 			
-			if(AdminData.checkBook(bookcallno)){
+			Connection con=Database.getConnection();
+			PreparedStatement ps;
+			try {
+				ps = con.prepareStatement("SELECT id FROM Books WHERE name=?");
+				ps.setString(1, (String) booklist.getSelectedItem());
+				ResultSet rs=ps.executeQuery();
+				rs.next();
+				id = rs.getInt(1);
+				
+			} catch (SQLException e1) {
+				System.out.println(e1);
+			}
 			
-				boolean i = AdminData.issueBook(bookcallno, studentid, studentname, studentcontact);
+			
+			if(AdminData.checkBook((int) booklist.getSelectedIndex())){
+			
+				boolean i = AdminData.issueBook((int) booklist.getSelectedIndex(), studentid, studentname, studentcontact);
 				if(i == true){
 					JOptionPane.showMessageDialog(IssueBook.this,"Knjiga je bila oddana!");
 					frame.dispose();
@@ -119,11 +156,12 @@ public class IssueBook extends JFrame {
 								.addComponent(lblBookName)
 								.addComponent(lblStudentId)
 								.addComponent(lblStudentName, GroupLayout.PREFERRED_SIZE, 108, GroupLayout.PREFERRED_SIZE)
+								.addComponent(lblStudentContact, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE)
 								.addComponent(lblStudentContact, GroupLayout.PREFERRED_SIZE, 100, GroupLayout.PREFERRED_SIZE))
 							.addGap(10)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 								.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
-								.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
+								.addComponent(booklist, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE)
 								.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, 172, GroupLayout.PREFERRED_SIZE))
 							.addGap(48))
@@ -149,9 +187,9 @@ public class IssueBook extends JFrame {
 					.addComponent(lblNewLabel)
 					.addGap(43)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(lblBookName)
-						.addComponent(textField_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addGap(28)
+							.addComponent(lblBookName)
+							.addComponent(booklist, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+						.addGap(26)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblStudentId)
 						.addComponent(textField_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -160,6 +198,7 @@ public class IssueBook extends JFrame {
 						.addComponent(lblStudentName)
 						.addComponent(textField_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 					.addGap(26)
+					
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblStudentContact)
 						.addComponent(textField_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
