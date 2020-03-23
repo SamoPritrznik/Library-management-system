@@ -11,6 +11,8 @@ In order to use the system privately:
 
 If the second option is chosen, you also need to copy the MySQL creation functions into the compiler (the code is in MYSQL.txt).
 
+![Image of the database](https://github.com/SamoPritrznik/Library-management-system/blob/master/Database%20image.png)
+
 # Admins
 An admin CANNOT be created in the application. It can be created only in the MySQL database directly.
 
